@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación POO - Nombre</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <img src="resources/logo-de-umg.png" alt="Logo de la Universidad" id="university-logo">
+        <h1>Presentación POO</h1>
+        <p>Nombre: René Alejandro Osorio González</p>
+        <p>Número de Carnet: 0905-23-10736</p>
+        <p>Tema: Programación Orientada a Objetos (Programación I)</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#abstraccion">Abstracción</a></li>
+            <li><a href="#herencia">Herencia</a></li>
+            <li><a href="#polimorfismo">Polimorfismo</a></li>
+            <li><a href="#encapsulacion">Encapsulación</a></li>
+            <li><a href="#interfaces">Interfaces</a></li>
+            <li><a href="#delegados">Delegados</a></li>
+            <li><a href="#eventos">Eventos</a></li>
+            <li><a href="#indexadores">Indexadores</a></li>
+            <li><a href="#propiedades">Propiedades</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="abstraccion">
+            <h2>Abstracción</h2>
+            <p>
+                Se refiere a la capacidad de representar conceptos del mundo real de manera simplificada
+                en forma de objetos y clases. <br> En otras palabras, la abstracción nos permite identificar
+                las características esenciales de un objeto y encapsularlas en una clase, mientras ocultamos 
+                los detalles innecesarios.
+            </p>
+            <section id="ejemplo-codigo">
+                <h3>Ejemplo de Código</h3>
+                <pre><code>
+            using System;
+
+            // Definición de la clase abstracta Animal
+            abstract class Animal
+            {
+                // Método abstracto para hacer un sonido
+                public abstract void HacerSonido();
+            }
+
+            // Clase Perro que hereda de la clase Animal
+            class Perro : Animal
+            {
+                // Implementación del método HacerSonido para el perro
+                public override void HacerSonido()
+                {
+                    Console.WriteLine("Guau guau");
+                }
+            }
+
+            // Clase Gato que hereda de la clase Animal
+            class Gato : Animal
+            {
+                // Implementación del método HacerSonido para el gato
+                public override void HacerSonido()
+                {
+                    Console.WriteLine("Miau");
+                }
+            }
+
+            // Clase principal para probar la abstracción
+            class Program
+            {
+                static void Main(string[] args)
+                {
+                    // Crear un objeto Perro
+                    Animal miPerro = new Perro();
+                    miPerro.HacerSonido(); // Output: Guau guau
+                
+                    // Crear un objeto Gato
+                    Animal miGato = new Gato();
+                    miGato.HacerSonido(); // Output: Miau
+                }
+            }
+
+                </code></pre>
+                <p>Este es un ejemplo simple en Java que imprime "¡Hola, mundo!" en la consola.</p>
+            </section>
+        </section>
+
+        <section id="herencia">
+            <h2>Herencia</h2>
+            <p>permite que una clase (llamada subclase o clase derivada) herede los atributos y
+                 métodos de otra clase (llamada superclase o clase base). Esto significa que la 
+                 subclase puede reutilizar el código de la superclase y también puede agregar nuevos 
+                 atributos y métodos o modificar los existentes según sea necesario.
+            </p>
+            <section id="ejemplo-codigo">
+                <h3>Ejemplo de Código</h3>
+                <pre><code>
+                    using System;
+
+                    // Definición de la clase base (superclase) Vehiculo
+                    class Vehiculo
+                    {
+                        public string Marca { get; set; }
+                        public string Modelo { get; set; }
+                        public int Año { get; set; }
+                    
+                        // Constructor de la clase Vehiculo
+                        public Vehiculo(string marca, string modelo, int año)
+                        {
+                            Marca = marca;
+                            Modelo = modelo;
+                            Año = año;
+                        }
+                    
+                        // Método para imprimir los detalles del vehículo
+                        public void MostrarDetalles()
+                        {
+                            Console.WriteLine($"Marca: {Marca}, Modelo: {Modelo}, Año: {Año}");
+                        }
+                    }
+                    
+                    // Definición de la clase derivada (subclase) Automovil
+                    class Automovil : Vehiculo
+                    {
+                        public int Puertas { get; set; }
+                    
+                        // Constructor de la clase Automovil
+                        public Automovil(string marca, string modelo, int año, int puertas)
+                            : base(marca, modelo, año)
+                        {
+                            Puertas = puertas;
+                        }
+                    
+                        // Método para imprimir los detalles del automóvil (incluyendo los detalles del vehículo base)
+                        public void MostrarDetallesAutomovil()
+                        {
+                            MostrarDetalles(); // Llama al método de la clase base para mostrar los detalles del vehículo
+                            Console.WriteLine($"Puertas: {Puertas}");
+                        }
+                    }
+                    
+                    class Program
+                    {
+                        static void Main(string[] args)
+                        {
+                            // Crear un objeto de la clase base Vehiculo
+                            Vehiculo vehiculo = new Vehiculo("Toyota", "Corolla", 2020);
+                            vehiculo.MostrarDetalles(); // Output: Marca: Toyota, Modelo: Corolla, Año: 2020
+                    
+                            // Crear un objeto de la clase derivada Automovil
+                            Automovil automovil = new Automovil("Ford", "Focus", 2019, 4);
+                            automovil.MostrarDetallesAutomovil(); // Output: Marca: Ford, Modelo: Focus, Año: 2019, Puertas: 4
+                        }
+                    }
+                    
+                </code></pre>
+        </section>
+
+        <section id="polimorfismo">
+            <h2>Polimorfismo</h2>
+            <p>
+                se refiere a la capacidad de objetos de diferentes clases de responder al mismo mensaje de manera distinta. 
+                En otras palabras, el polimorfismo permite que un objeto pueda comportarse de diferentes maneras dependiendo 
+                del contexto en el que se encuentre.
+            </p>
+            <section id="ejemplo-codigo">
+                <h3>Ejemplo de Código</h3>
+                <pre><code>
+                    using System;
+
+                    // Definición de la clase base Figura
+                    class Figura
+                    {
+                        // Método virtual para calcular el área
+                        public virtual double CalcularArea()
+                        {
+                            return 0;
+                        }
+                    }
+                    
+                    // Definición de la clase derivada Rectangulo
+                    class Rectangulo : Figura
+                    {
+                        public double Base { get; set; }
+                        public double Altura { get; set; }
+                    
+                        // Constructor de la clase Rectangulo
+                        public Rectangulo(double @base, double altura)
+                        {
+                            Base = @base;
+                            Altura = altura;
+                        }
+                    
+                        // Sobrescritura del método CalcularArea para el rectángulo
+                        public override double CalcularArea()
+                        {
+                            return Base * Altura;
+                        }
+                    }
+                    
+                    // Definición de la clase derivada Circulo
+                    class Circulo : Figura
+                    {
+                        public double Radio { get; set; }
+                    
+                        // Constructor de la clase Circulo
+                        public Circulo(double radio)
+                        {
+                            Radio = radio;
+                        }
+                    
+                        // Sobrescritura del método CalcularArea para el círculo
+                        public override double CalcularArea()
+                        {
+                            return Math.PI * Math.Pow(Radio, 2);
+                        }
+                    }
+                    
+                    class Program
+                    {
+                        static void Main(string[] args)
+                        {
+                            // Crear objetos de diferentes tipos de Figura
+                            Figura rectangulo = new Rectangulo(5, 10);
+                            Figura circulo = new Circulo(3);
+                    
+                            // Calcular el área de cada figura y mostrar el resultado
+                            Console.WriteLine("Área del rectángulo: " + rectangulo.CalcularArea());
+                            Console.WriteLine("Área del círculo: " + circulo.CalcularArea());
+                        }
+                    }
+                    
+                </code></pre>
+        </section>
+
+        <section id="encapsulacion">
+            <h2>Encapsulación</h2>
+            <p>se refiere a la ocultación de los detalles internos de un objeto y el acceso a sus datos solo 
+                a través de métodos públicos. Esto significa que los atributos de un objeto deben ser privados 
+                y solo accesibles a través de métodos públicos (getters y setters) que permiten controlar cómo 
+                se accede y modifica la información interna del objeto.
+            </p>
+            <h3>Ejemplo de Código</h3>
+            <pre><code>
+                using System;
+
+                // Definición de la clase Estudiante
+                class Estudiante
+                {
+                    // Atributos privados
+                    private string nombre;
+                    private int edad;
+                
+                    // Propiedades públicas para acceder y modificar los atributos privados (encapsulación)
+                    public string Nombre
+                    {
+                        get { return nombre; }
+                        set { nombre = value; }
+                    }
+                
+                    public int Edad
+                    {
+                        get { return edad; }
+                        set
+                        {
+                            if (value >= 0) // Validación para asegurar que la edad sea un número positivo
+                                edad = value;
+                        }
+                    }
+                
+                    // Constructor de la clase Estudiante
+                    public Estudiante(string nombre, int edad)
+                    {
+                        Nombre = nombre; // Utiliza la propiedad Nombre para asignar el valor al atributo privado nombre
+                        Edad = edad; // Utiliza la propiedad Edad para asignar el valor al atributo privado edad
+                    }
+                
+                    // Método público para mostrar los detalles del estudiante
+                    public void MostrarDetalles()
+                    {
+                        Console.WriteLine($"Nombre: {Nombre}, Edad: {Edad}");
+                    }
+                }
+                
+                class Program
+                {
+                    static void Main(string[] args)
+                    {
+                        // Crear un objeto de la clase Estudiante
+                        Estudiante estudiante = new Estudiante("Juan", 20);
+                
+                        // Acceder a las propiedades para mostrar los detalles del estudiante
+                        estudiante.MostrarDetalles(); // Output: Nombre: Juan, Edad: 20
+                
+                        // Modificar las propiedades
+                        estudiante.Nombre = "Pedro";
+                        estudiante.Edad = -5; // Intenta asignar una edad negativa (será ignorada debido a la validación)
+                
+                        // Mostrar los detalles actualizados del estudiante
+                        estudiante.MostrarDetalles(); // Output: Nombre: Pedro, Edad: 20
+                    }
+                }
+                
+            </code></pre>
+        </section>
+
+        <section id="interfaces">
+            <h2>Interfaces</h2>
+            <p>
+                Las interfaces en C# son similares a las clases abstractas, pero tienen una serie de diferencias clave. 
+                Las interfaces definen un contrato que las clases pueden implementar. Esto significa que las interfaces 
+                especifican qué métodos y propiedades deben estar presentes en las clases que las implementan, pero no 
+                proporcionan ninguna implementación de esos métodos y propiedades. Las clases que implementan una 
+                interfaz deben proporcionar su propia implementación para cada miembro de la interfaz.
+            </p>
+            <h3>Ejemplo de Código</h3>
+            <pre><code>
+                using System;
+
+                // Definición de la interfaz IPuedeCantar
+                interface IPuedeCantar
+                {
+                    void Cantar();
+                }
+
+                // Clase Pajaro que implementa la interfaz IPuedeCantar
+                class Pajaro : IPuedeCantar
+                {
+                    public void Cantar()
+                    {
+                        Console.WriteLine("Pío pío pío");
+                    }
+                }
+
+                // Clase Persona que también implementa la interfaz IPuedeCantar
+                class Persona : IPuedeCantar
+                {
+                    public void Cantar()
+                    {
+                        Console.WriteLine("La la la");
+                    }
+                }
+
+                class Program
+                {
+                    static void Main(string[] args)
+                    {
+                        IPuedeCantar pajaro = new Pajaro();
+                        IPuedeCantar persona = new Persona();
+                    
+                        pajaro.Cantar(); // Output: Pío pío pío
+                        persona.Cantar(); // Output: La la la
+                    }
+                }
+
+            </code></pre>
+        </section>
+
+        <section id="delegados">
+            <h2>Delegados</h2>
+            <p>
+                Los delegados en C# son tipos que representan referencias a métodos con una 
+                firma específica. Permiten tratar a los métodos como si fueran objetos y proporcionan 
+                una forma segura y flexible de encapsular la funcionalidad.
+            </p>
+            <h3>Ejemplo de Código</h3>
+            <pre><code>
+                using System;
+
+                // Declaración del delegado OperacionMatematica
+                delegate double OperacionMatematica(double x, double y);
+
+                class Program
+                {
+                    // Método que realiza una suma
+                    static double Sumar(double a, double b)
+                    {
+                        return a + b;
+                    }
+                
+                    // Método que realiza una resta
+                    static double Restar(double a, double b)
+                    {
+                        return a - b;
+                    }
+                
+                    static void Main(string[] args)
+                    {
+                        // Creación de instancias de delegado y asignación de métodos
+                        OperacionMatematica operacion1 = Sumar;
+                        OperacionMatematica operacion2 = Restar;
+                    
+                        // Uso de los delegados para realizar operaciones matemáticas
+                        double resultado1 = operacion1(5, 3); // Suma: 5 + 3 = 8
+                        double resultado2 = operacion2(5, 3); // Resta: 5 - 3 = 2
+                    
+                        Console.WriteLine("Resultado de la suma: " + resultado1);
+                        Console.WriteLine("Resultado de la resta: " + resultado2);
+                    }
+                }
+
+            </code></pre>
+        </section>
+
+        <section id="eventos">
+            <h2>Eventos</h2>
+            <p>
+                permiten que un objeto notifique a otros objetos cuando ocurre algún tipo de acción o 
+                cambio de estado. Los eventos son una parte fundamental de la programación basada en el 
+                patrón de diseño observador (Observer pattern)
+            </p>
+            <h3>Ejemplo de Código</h3>
+            <pre><code>
+                using System;
+
+                // Declaración de la clase que va a contener el evento
+                class Emisor
+                {
+                    // Declaración del evento
+                    public event EventHandler<string> AlgoOcurrido;
+                    
+                    // Método que dispara el evento
+                    public void DispararEvento()
+                    {
+                        Console.WriteLine("Algo ha ocurrido.");
+                        OnAlgoOcurrido("Datos adicionales relacionados con el evento.");
+                    }
+                
+                    // Método protegido para invocar el evento de forma segura
+                    protected virtual void OnAlgoOcurrido(string datos)
+                    {
+                        AlgoOcurrido?.Invoke(this, datos);
+                    }
+                }
+                
+                class Program
+                {
+                    static void Main(string[] args)
+                    {
+                        Emisor emisor = new Emisor();
+                    
+                        // Suscripción al evento
+                        emisor.AlgoOcurrido += (sender, datos) =>
+                        {
+                            Console.WriteLine("Se ha recibido la notificación de que algo ocurrió:");
+                            Console.WriteLine("Datos adicionales: " + datos);
+                        };
+                    
+                        // Disparo del evento
+                        emisor.DispararEvento();
+                    }
+                }
+                
+            </code></pre>
+        </section>
+        
+        <section id="indexadores">
+            <h2>Indexadores</h2>
+            <p>
+                permiten que un objeto sea indexado como un array. Esto significa que puedes acceder 
+                a los elementos del objeto utilizando notación de corchetes [], similar a como lo harías con un array.
+            </p>
+            <h3>Ejemplo de Código</h3>
+            <pre><code>
+                using System;
+
+                // Definición de la clase con un indexador
+                class Coleccion
+                {
+                    private string[] elementos = new string[5];
+                
+                    public string this[int indice]
+                    {
+                        get => elementos[indice];
+                        set => elementos[indice] = value;
+                    }
+                }
+                
+                class Program
+                {
+                    static void Main(string[] args)
+                    {
+                        Coleccion coleccion = new Coleccion();
+                
+                        coleccion[0] = "Elemento 1";
+                        coleccion[1] = "Elemento 2";
+                
+                        Console.WriteLine("Elemento 1: " + coleccion[0]);
+                        Console.WriteLine("Elemento 2: " + coleccion[1]);
+                    }
+                }
+                
+            </code></pre>
+        </section>
+        
+        <section id="propiedades">
+            <h2>Propiedades</h2>
+            <p>
+                son miembros de una clase que proporcionan un mecanismo flexible para leer, escribir o calcular el valor de un campo privado. 
+                Permiten controlar el acceso a los campos de una clase y proporcionar una interfaz pública para interactuar con ellos.
+            </p>
+            <h3>Ejemplo de Código</h3>
+            <pre><code>
+                using System;
+
+                // Definición de la clase Persona con propiedades
+                class Persona
+                {
+                    // Campos privados
+                    private string nombre;
+                    private int edad;
+                
+                    // Propiedad para el campo nombre
+                    public string Nombre
+                    {
+                        get { return nombre; }
+                        set { nombre = value; }
+                    }
+                
+                    // Propiedad para el campo edad
+                    public int Edad
+                    {
+                        get { return edad; }
+                        set
+                        {
+                            if (value >= 0) // Validación para asegurar que la edad sea un número positivo
+                                edad = value;
+                        }
+                    }
+                }
+                
+                class Program
+                {
+                    static void Main(string[] args)
+                    {
+                        // Creación de una instancia de la clase Persona
+                        Persona persona = new Persona();
+                
+                        // Asignación de valores a través de las propiedades
+                        persona.Nombre = "Juan";
+                        persona.Edad = 30;
+                
+                        // Acceso a los valores a través de las propiedades y mostrarlos en la consola
+                        Console.WriteLine("Nombre: " + persona.Nombre);
+                        Console.WriteLine("Edad: " + persona.Edad);
+                    }
+                }                
+            </code></pre>
+        </section>
+        <!-- Repite esta estructura para cada tema -->
+    </main>
+
+    <footer>
+        <p>© 2024 Nombre - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>

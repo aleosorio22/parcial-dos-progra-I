@@ -1,0 +1,103 @@
+:root {
+    --color-background: #343a40;
+    --color-text: #fff;
+    --color-link: #007bff;
+    --color-link-hover: #0056b3;
+}
+
+/* Reset de estilos */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+header {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    padding: 20px 0;
+    text-align: center;
+}
+
+#university-logo {
+    width: 200px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    margin-bottom: 10px; /* Espacio entre el logo y el título */
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+nav {
+    background-color: var(--color-background);
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--color-link-hover);
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+footer {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+pre {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto; /* Añade una barra de desplazamiento horizontal si es necesario */
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #00ff00; /* Color del texto de código (en este caso verde) */
+}
